@@ -11,6 +11,10 @@ module.exports = function(app){
         mainroutes.getAllAuthors(req, res);
     });
 
+    app.put('/authors/edit/:id', (req, res, next) => {
+        mainroutes.update(req, res);
+    });
+
     app.delete('/authors/:id', (req, res, next) => {
         mainroutes.delete(req, res);
     })

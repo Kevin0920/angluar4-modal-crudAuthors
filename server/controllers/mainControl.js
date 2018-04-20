@@ -40,6 +40,25 @@ module.exports = {
                 res.redirect(303, '/authors');
             }
         })
+    },
+
+    update: function (req, res) {
+        Author.findOne({
+            _id: req.params.id
+        }, function (err, author) {
+            if (err) {
+                res.json({err : err});
+            } else {
+                author.name = req.body.name;
+                author.save(function (err) {
+                    if (err) {
+                        res.json({err : err});
+                    } else {
+                        res.json({author : author});
+                    }
+                })
+            }
+        })
     }
 
 }

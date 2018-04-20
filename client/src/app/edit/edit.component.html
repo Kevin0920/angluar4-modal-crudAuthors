@@ -1,0 +1,26 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Page</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Favorite Authors</h1>
+    <a [routerLink]="['/']">Home</a>
+    <h3>Edit this author</h3>
+    <div class="input-group" *ngFor="let a of allAuthors">
+      <form (submit)="editAuthor(a._id)">
+        <input type="text" class="form-control" placeholder="{{a.name}}"
+        [(ngModel)]="updateInfo.name" name="name">
+        <div class="input-group-append">
+          <button class="btn btn-warning" type="button">Cancel</button>
+          <button type="button" class="btn btn-info">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

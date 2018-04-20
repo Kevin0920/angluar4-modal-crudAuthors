@@ -6,6 +6,7 @@ import { error } from 'selenium-webdriver';
 export class MainService {
 
   authors = [];
+  author;
   constructor(private _http: Http) { }
 
 
@@ -37,6 +38,19 @@ export class MainService {
   delete(id, callback) {
     this._http.delete('/authors/' + id).subscribe(
       (res) => {
+        callback(res.json());
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+
+  update(id, author, callback) {
+    console.log(author);
+    this._http.put("/authors/edit/" + id, author).subscribe(
+      (res) => {
+        console.log(res);
         callback(res.json());
       },
       (err) => {

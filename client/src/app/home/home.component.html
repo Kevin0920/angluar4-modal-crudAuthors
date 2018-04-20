@@ -22,7 +22,7 @@
         <tr *ngFor="let a of authors">
           <td>{{a.name}}</td>
           <td>
-            <button class="btn btn-warning">Edit</button>
+            <button class="btn btn-warning" [routerLink]="['edit', a._id]">Edit</button>
             <button class="btn btn-danger" (click)="delete(a._id)">Delete</button>
           </td>
         </tr>

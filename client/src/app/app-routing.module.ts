@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
-  { path:'', component: HomeComponent, pathMatch: "full" }
+  { path:'', component: HomeComponent, pathMatch: "full" },
+  { path:'edit/:id', component: EditComponent }
 ];
 
 @NgModule({
