@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from "./../main.service";
 import { Router } from "@angular/router";
+declare var $: any;
+declare var jquery: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,11 +26,16 @@ export class HomeComponent implements OnInit {
   createAuthor() {
     this._service.createAuthor(this.newAuthor, (res) => {
       console.log('new person =>',res);
+      $('#contact_dialog').modal('hide');
       this.newAuthor = {
         name:''
       }
+      // automatically update without refresh page 
+      this._service.retrieveAuthors((res) => {
+        this.authors = res;
+      })
     });
-    this._router.navigate(['']);
+    
   }
 
   delete(id) {
